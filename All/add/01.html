@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+姓名：<input type="text" id="name">
+性别：<input type="text" id="sex">
+<input type="button" value="添加" id="btn">
+<script src="jquery.min.js"></script>
+<script>
+    $("#btn").click(function(){
+        var name=$("#name").val();
+        var sex=$("#sex").val();
+        $.ajax({
+            url:'01.php',
+            type:'post',
+            data:{'name':name,'sex':sex},
+            dataType:'json',
+            success:function(data){
+                if(data.code==0){
+                    alert('添加成功');
+                }else{
+                    alert('添加失败');
+                }
+            }
+        })
+    })
+
+</script>
+</body>
+</html>
